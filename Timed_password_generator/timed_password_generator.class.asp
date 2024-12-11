@@ -4,6 +4,7 @@ Class timed_password_generator
     'Setting parameters'
     Dim path_of_file
     Dim update_time
+    Dim time_check
 
     'my values'
     Dim path
@@ -14,6 +15,17 @@ Class timed_password_generator
 	sub class_initialize()
         path_of_file = "" '<-- Set param
         update_time = 1 '<-- Set param
+        'Set one of this params
+        'time_check = "yyyy" '<- Year
+        'time_check = "q"    '<- Quarter
+        'time_check = "m"    '<- Month
+        'time_check = "y"    '<- Day of year
+        time_check = "d"    '<- Day
+        'time_check = "w"    '<- Weekday
+        'time_check = "ww"   '<- Week of year
+        'time_check = "h"    '<- Hour
+        'time_check = "n"    '<- Minute
+        'time_check = "s"    '<- Second
 
         path = path_of_file + "pw_generated.txt"
 	end sub
@@ -84,10 +96,12 @@ Class timed_password_generator
     
     ' Public function
     Public Function Get_password()
+    dim fs 
+    set fs=Server.CreateObject("Scripting.FileSystemObject") 
         'Check if file is present'
-        If FileSystemObject.FileExists(path) Then 
-            current_time = Now()
-            Dim fs, t, temp_date, temp_psw
+        If fs.FileExists(path) Then 
+            current_timestamp = Now()
+            Dim t, temp_date, temp_psw
             set fs=Server.CreateObject("Scripting.FileSystemObject")
             set t=fs.OpenTextFile(path,1,false) 
             temp_time = t.ReadLine()
@@ -95,7 +109,7 @@ Class timed_password_generator
             t.close
             Set fs=Nothing
             Set t=Nothing
-            If DateDiff("d",temp_time,current_timestamp) >=  update_time Then 
+            If DateDiff(time_check,temp_time,current_timestamp) >=  update_time Then 
                 Generate_password()
                 Write_file()
             Else
