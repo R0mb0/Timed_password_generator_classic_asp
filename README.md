@@ -33,7 +33,7 @@ flowchart LR
 
 1. Set class parameters
    ```
-    path_of_file = "" '<-- Set param
+        path_of_file = "" '<-- Set param
         update_time = 1 '<-- Set param
         'Set one of this params
         'time_check = "yyyy" '<- Year
@@ -54,8 +54,8 @@ flowchart LR
     <%@LANGUAGE="VBSCRIPT"%>
     <!--#include file="timed_password_generator.class.asp"-->
     <%
-    Dim my_psw
-    Set my_psw = new timed_password_generator
+        Dim my_psw
+        Set my_psw = new timed_password_generator
    ```
 3. Retrieve the password
    ```
