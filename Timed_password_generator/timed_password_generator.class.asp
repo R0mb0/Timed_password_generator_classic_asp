@@ -36,6 +36,8 @@ Class timed_password_generator
 	end sub
 
     'Private subs
+
+    ' Generate a random password
     Private Sub Generate_password()
         'Code taken from https://salman-w.blogspot.com/2009/06/generate-random-strings-using.html
         Randomize()
@@ -83,6 +85,7 @@ Class timed_password_generator
         password = tempCopy 
     End Sub
 
+    ' Write informations to file 
     Private Sub Write_file()
         Dim fs,f
         Set fs=Server.CreateObject("Scripting.FileSystemObject")
@@ -95,6 +98,8 @@ Class timed_password_generator
     End Sub
     
     ' Public function
+
+    ' Retrieve a generated password 
     Public Function Get_password()
     dim fs 
     set fs=Server.CreateObject("Scripting.FileSystemObject") 
