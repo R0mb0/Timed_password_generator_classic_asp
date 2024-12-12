@@ -22,3 +22,46 @@ flowchart LR
 ```
 
 > "one day" is an example of time, in the class this parameter in editable
+
+## `timed_password_generator.class.asp`'s avaible function
+
+- Retrieve the password -> `Public Function Get_password()`
+
+## How to use 
+
+> From `timed_password_generator.class.asp`
+
+1. Set class parameters
+   ```
+    path_of_file = "" '<-- Set param
+        update_time = 1 '<-- Set param
+        'Set one of this params
+        'time_check = "yyyy" '<- Year
+        'time_check = "q"    '<- Quarter
+        'time_check = "m"    '<- Month
+        'time_check = "y"    '<- Day of year
+        time_check = "d"    '<- Day
+        'time_check = "w"    '<- Weekday
+        'time_check = "ww"   '<- Week of year
+        'time_check = "h"    '<- Hour
+        'time_check = "n"    '<- Minute
+        'time_check = "s"    '<- Second
+   ```
+> From `Test.asp`
+
+2. Initialize the class
+   ```
+    <%@LANGUAGE="VBSCRIPT"%>
+    <!--#include file="timed_password_generator.class.asp"-->
+    <%
+    Dim my_psw
+    Set my_psw = new timed_password_generator
+   ```
+3. Retrieve the password
+   ```
+        Response.write("<h1> Password of the day: </h1><br>")
+        Response.write(my_psw.Get_password())
+    %> 
+   ```
+
+### A part of this project was inspired by [Salman's Web Development Blog](https://salman-w.blogspot.com/2009/06/generate-random-strings-using.html)
