@@ -32,7 +32,7 @@ flowchart LR
 > From `timed_password_generator.class.asp`
 
 1. Set class parameters
-   ```
+   ```asp
         path_of_file = "" '<-- Set param
         update_time = 1 '<-- Set param
         'Set one of this params
@@ -50,7 +50,7 @@ flowchart LR
 > From `Test.asp`
 
 2. Initialize the class
-   ```
+   ```asp
     <%@LANGUAGE="VBSCRIPT"%>
     <!--#include file="timed_password_generator.class.asp"-->
     <%
@@ -58,7 +58,7 @@ flowchart LR
         Set my_psw = new timed_password_generator
    ```
 3. Retrieve the password
-   ```
+   ```asp
         Response.write("<h1> Password of the day: </h1><br>")
         Response.write(my_psw.Get_password())
     %> 
